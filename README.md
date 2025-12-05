@@ -2,56 +2,80 @@
 **A Comparative Study of Machine Learning Algorithms**
 
 ### 👥 Authors
-* [cite_start]**Aman** - Lovely Professional University [cite: 2, 3]
-* [cite_start]**Rohan Dhiman** - Lovely Professional University [cite: 2, 3]
-* [cite_start]**Rohit Thakur** - Lovely Professional University [cite: 2, 3]
+* **Aman**
+* **Rohan Dhiman**
+* **Rohit Thakur**
+* *Institution:* Lovely Professional University, Phagwara, Punjab
 
 ---
 
-## 📌 Overview
-Student retention is a critical performance indicator for higher education institutions. [cite_start]Traditional predictive models rely on static demographic data, which fails to capture a student's dynamic academic trajectory[cite: 6, 7].
+## 📌 Project Overview
+Student retention is a critical performance indicator for higher education institutions. Traditional predictive models often rely heavily on static demographic data (e.g., background, income), which fails to capture the dynamic academic trajectory of a student.
 
-This project presents a machine learning-based decision support system that predicts dropout risk. [cite_start]By utilizing a dataset of **4,424 undergraduates** and implementing novel **Behavioral Feature Engineering** (such as "Academic Efficiency" and "Struggle Ratios"), we transformed complex educational data into a linearly separable problem[cite: 9, 12].
+This project presents a machine learning-based decision support system aimed at predicting student dropout risk. By utilizing a dataset of **4,424 undergraduates** and implementing novel **Behavioral Feature Engineering** (specifically focusing on "Academic Efficiency" and "Struggle Ratios"), we successfully transformed complex educational data into a linearly separable problem.
 
-## 🎯 Key Objectives
-1.  [cite_start]**Prediction:** Classify students into **Dropout** or **Graduate** categories[cite: 20].
-2.  [cite_start]**Innovation:** Engineer **Behavioral Ratios** (e.g., Effort vs. Result) that outperform raw data[cite: 21].
-3.  [cite_start]**Optimization:** Prioritize **Recall** to minimize False Negatives (missed at-risk students)[cite: 22].
-
----
-
-## ⚙️ Methodology & Feature Engineering
-We moved beyond raw numbers (like "exams passed") to understand the *context* of student behavior. The key engineered features included:
-
-* [cite_start]**Academic Efficiency (Approval Rate):** $\frac{Units Approved}{Units Enrolled}$ — Measures success rate rather than volume[cite: 47, 49].
-* [cite_start]**Struggle Ratio:** $\frac{Evaluations Taken}{Units Approved}$ — Identifies students putting in high effort but achieving low results (burnout indicator)[cite: 51, 52].
-* [cite_start]**Financial Pressure Index:** Combines scholarship status and tuition payment lags[cite: 55].
-* [cite_start]**Grade Trend:** Captures the momentum between Semester 1 and Semester 2 grades[cite: 58].
+### 🎯 Key Objectives
+1.  **Prediction:** Classify students into **Dropout** or **Graduate** categories.
+2.  **Innovation:** Engineer **Behavioral Ratios** that outperform raw data by providing context to student efforts.
+3.  **Optimization:** Prioritize **Recall** to minimize False Negatives (identifying at-risk students before they leave).
 
 ---
 
-## 📊 Model Performance
-We compared three algorithms: **Logistic Regression**, **Decision Tree (CART)**, and **Random Forest**.
+## ⚙️ Feature Engineering Strategy
+We hypothesized that raw numbers (e.g., "Passed 3 exams") are misleading without context. We derived four novel features to capture student behavior:
 
-| Algorithm | Accuracy | Recall (Dropout) | AUC Score |
-| :--- | :--- | :--- | :--- |
-| **Logistic Regression** | **91.46%** | **0.89** | **0.96** |
-| Random Forest | 90.63% | 0.86 | 0.95 |
-| Decision Tree | 87.74% | 0.85 | 0.87 |
+### 1. Academic Efficiency (Approval Rate)
+Instead of counting passed exams, we calculate the rate of success.
+$$Approval Rate = \frac{Curricular Units Approved}{Curricular Units Enrolled}$$
+*Rationale:* A student passing 2/2 courses (100%) is essentially safer than one passing 4/8 courses (50%).
 
-[cite_start]*Table Data Source: [cite: 76]*
+### 2. The Struggle Ratio
+$$Struggle Ratio = \frac{Evaluations Taken}{Units Approved}$$
+*Rationale:* Identifies students who attend many exams (high effort) but fail to pass (low result). A high ratio is a primary indicator of academic burnout.
 
-[cite_start]**Key Finding:** Logistic Regression achieved the highest accuracy (91.46%) and Recall (0.89), proving that robust feature engineering can allow simpler models to outperform complex ensemble methods[cite: 11, 12].
+### 3. Financial Pressure Index
+$$Risk = Debtor + (1 - Tuition Paid)$$
+*Rationale:* Combines debt status and tuition payment lags into a single distress signal.
+
+### 4. Grade Trend (Momentum)
+$$Trend = Sem2 Grade - Sem1 Grade$$
+*Rationale:* Captures whether a student is adapting to university life (positive trend) or disengaging (negative trend).
+
+---
+
+## 📊 Experimental Results
+We compared three supervised learning algorithms. Contrary to the initial hypothesis that complex ensemble methods would dominate, the robust feature engineering allowed the simpler Logistic Regression model to perform best.
+
+| Algorithm | Accuracy | Recall (Dropout) | Precision | AUC Score |
+| :--- | :--- | :--- | :--- | :--- |
+| **Logistic Regression** | **91.46%** | **0.89** | **0.92** | **0.96** |
+| Random Forest | 90.63% | 0.86 | 0.93 | 0.95 |
+| Decision Tree | 87.74% | 0.85 | 0.89 | 0.87 |
+
+### Key Findings
+* **Logistic Regression** achieved the highest accuracy (**91.46%**) and best Recall (**0.89**).
+* **Feature Importance:** The top predictors were the engineered **Sem2 Approval Rate** and **Struggle Ratio**, proving that behavioral ratios are more predictive than static demographics.
+* **Generalization:** The model showed negligible overfitting (0.17% gap between Training and Testing accuracy).
+
+---
+
+## 🛠️ Technologies Used
+* **Language:** Python
+* **Libraries:** Scikit-learn, Pandas, NumPy, Matplotlib/Seaborn
+* **Environment:** Jupyter Notebook
 
 ---
 
 ## 🚀 Future Scope
-* [cite_start]**Deployment:** Building a dashboard using **Streamlit** for University Administrators[cite: 104].
-* [cite_start]**Intervention:** Integration with university systems to automate support emails for students with high "Struggle Ratios"[cite: 105].
-
-## 📚 Data Source
-[cite_start]The dataset was sourced from the **Polytechnic Institute of Portalegre**[cite: 33].
-* *Reference:* V. Realinho, J. Machado, L. Baptista, and M. V. Martins, "Predict Students' Dropout and Academic Success," Data, vol. 6, no. 11, p. [cite_start]146, 2021[cite: 110].
+* **Dashboard Deployment:** Develop a web-based dashboard using **Streamlit** for University Administrators to visualize risk in real-time.
+* **Automated Intervention:** Integration with university email systems to automatically send support resources to students flagged with a "High Struggle Ratio."
 
 ---
-*Project conducted at Lovely Professional University, Phagwara, Punjab.*
+
+## 📚 Acknowledgments & References
+**Guidance:**
+Special thanks to **Geetika Sethi** for guiding the statistical validation phase, specifically regarding the prioritization of Recall over Accuracy.
+
+**Data Source:**
+* V. Realinho, J. Machado, L. Baptista, and M. V. Martins, "Predict Students' Dropout and Academic Success," *Data*, vol. 6, no. 11, p. 146, 2021.
+* Dataset provided by the **Polytechnic Institute of Portalegre**.
