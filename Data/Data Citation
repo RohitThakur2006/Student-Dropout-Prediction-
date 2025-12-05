@@ -1,0 +1,21 @@
+Proper Citation 
+ 
+ 
+1.	The Dataset Identity 
+•	Original Name: Predict Students' Dropout and Academic Success 
+•	Source: Polytechnic Institute of Portalegre (Portugal) 
+•	Original Publication: Published in the journal Data (2021) 
+ 
+2.	APA Style (Standard for Reports): 
+Realinho, V., Machado, J., Baptista, L., & Martins, M. V. (2021). Predict Students' Dropout and Academic Success. Data, 6(11), 146. https://doi.org/10.3390/data7110146 
+ 
+3.	Source Acknowledgement (Transparency): 
+"The dataset was accessed via Kaggle (uploaded by 'The Devastator'), which mirrors the original data from the UCI Machine Learning Repository." 
+ 
+4.	Dataset 
+•	Rows: 4,424 Students 
+•	Columns: 35 Features (Demographic, Socio-economic, Macro-economic, Academic) 
+•	Target Classes: 3 (Dropout, Enrolled, Graduate)  
+•	Timeframe: Data covers students enrolled in various undergraduate degrees (Agronomy, Design, Nursing, etc.). 
+ 
+ 
